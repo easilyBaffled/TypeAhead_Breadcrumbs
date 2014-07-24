@@ -1,0 +1,14 @@
+<span class="selector_container">
+    <p class="title">Something {{firstSection}}</p>
+    <input type="text" class="selector" ng-model="model" placeholder="{{prompt}}" ng-keydown="selected=false;" ng-focus="boxHasFocus=true; handleFocus()" ng-blur="boxHasFocus=false" />
+    <div id="triangle-right_shadow"></div>
+    <div id="triangle-right"></div>
+    <div class="items" ng-hide="(!model.length || selected) && !boxHasFocus">
+        <div class="item">
+            <p class="title">Recent Campaign</p>
+        </div>
+        <div class="item" ng-repeat="item in firstSection | filter:model  track by $index" ng-mousedown="handleSelection(item)" style="cursor:pointer" ng-class="{active:isCurrent($index)}" ng-mouseenter="setCurrent($index)">
+            <p class="title">{{item}}</p>
+        </div>
+    </div>
+</span>
